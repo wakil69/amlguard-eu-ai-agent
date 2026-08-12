@@ -312,6 +312,3 @@ qualified French AML, privacy, security, and legal professionals.
 This project is licensed under the [Apache License 2.0](LICENSE). It permits
 commercial and private use, modification, and redistribution subject to the
 license terms, and includes an explicit patent grant.
-#   a m l g u a r d - e u - a i - a g e n t  
- #   a m l g u a r d - e u - a i - a g e n t  
- 
