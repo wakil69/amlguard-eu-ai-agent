@@ -1,0 +1,56 @@
+schema_version: "1.0"
+experiment_id: 33333333-3333-4333-8333-333333333333
+name: proofagent-deterministic-smoke-example
+git_commit: uncommitted
+dependency_lock_hash: pending
+dataset_version: "1.0"
+dataset_seed: 20260810
+scenario_pack: regression
+scenario_version: "1.0"
+policy_version: "1.0"
+control_version: "1.0"
+endpoint_class: EU
+configurations:
+  - configuration_id: fake-b5
+    model_id: fake/deterministic
+    context_condition: B5
+    prompt_version: "1.0"
+    tool_schema_version: "1.0"
+    graph_version: "1.0"
+    estimated_session_cost_eur: "0.00"
+repetitions: 1
+evaluator_version: "1.0"
+juror_mode: none
+proofagent:
+  harness_version: "0.11.0"
+  harness_llm: gpt-4.1-mini
+  fallback_llm: null
+  consensus: delphi
+  metrics:
+    - task_success
+    - hallucination_resistance
+    - safety
+    - instruction_following
+  seed: 42
+  max_tokens: 8192
+  context_budget_tokens: null
+  assess_context: true
+  assess_compliance: true
+  compliance_frameworks:
+    - eu_ai_act
+    - gdpr
+  compliance_evidence_registry: config/governance/proofagent_evidence.yaml
+  governance_profile:
+    name: AMLGuard EU human-supervised investigation
+    use_case: other
+    autonomy_level: L2
+    data_sensitivity: pii
+    region: eu
+    human_oversight: true
+    takes_consequential_actions: false
+    fail_on: block
+  estimated_evaluation_cost_eur: "0.50"
+  failure_policy: fail_job
+telemetry_version: "1.0"
+randomization_seed: 42
+cost_ceiling_eur: "1.00"

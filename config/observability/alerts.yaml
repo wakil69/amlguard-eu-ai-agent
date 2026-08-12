@@ -1,0 +1,53 @@
+groups:
+  - name: amlguard-safety
+    rules:
+      - alert: AMLGuardHardBlockDetected
+        expr: increase(amlguard_hard_blocks_total[5m]) > 0
+        for: 0m
+        labels:
+          severity: critical
+        annotations:
+          summary: An AMLGuard investigation was hard-blocked
+          description: Review the hard-block audit event and restricted trajectory.
+      - alert: AMLGuardCrossScopeAttempt
+        expr: increase(amlguard_cross_scope_attempts_total[5m]) > 0
+        for: 0m
+        labels:
+          severity: critical
+        annotations:
+          summary: AMLGuard detected a cross-scope access attempt
+          description: Investigate the actor, surface, case authorization, and audit chain.
+      - alert: AMLGuardToolDenialBurst
+        expr: sum(increase(amlguard_tool_denials_total[10m])) > 5
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: AMLGuard tool denials exceed the expected rate
+          description: Check for repeated prohibited or cross-scope tool requests.
+  - name: amlguard-availability
+    rules:
+      - alert: AMLGuardApplicationDown
+        expr: up{job="amlguard"} == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: The AMLGuard metrics endpoint is unavailable
+          description: Check the API process and its deployment dependencies.
+      - alert: AMLGuardDependencyNotReady
+        expr: amlguard_dependency_ready == 0
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: An AMLGuard readiness dependency is failing
+          description: Inspect the dependency label and /health/ready response.
+      - alert: AMLGuardInvestigationFailureRatio
+        expr: sum(rate(amlguard_runs_total{status="FAILED"}[15m])) / clamp_min(sum(rate(amlguard_runs_total[15m])), 0.001) > 0.05
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: AMLGuard investigation failure ratio is above five percent
+          description: Inspect failed-stage spans and sanitized failure logs.

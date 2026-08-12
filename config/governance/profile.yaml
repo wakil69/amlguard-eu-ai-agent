@@ -1,0 +1,31 @@
+agent:
+  name: AMLGuard-EU
+  version: 0.1.0
+  use_case: aml_alert_investigation_copilot
+  autonomy: advisory
+  data_classification: synthetic_financial_research
+  region: EU
+ownership:
+  product_owner: TBD
+  technical_owner: TBD
+  aml_control_owner: TBD
+  privacy_owner: TBD
+allowed_actions:
+  - retrieve_case_scoped_evidence
+  - calculate_transaction_statistics
+  - retrieve_approved_policy
+  - draft_investigation_summary
+  - recommend_human_escalation
+prohibited_actions:
+  - submit_suspicious_transaction_report
+  - freeze_account_or_transaction
+  - modify_customer_record
+  - contact_customer
+  - make_criminal_determination
+human_oversight:
+  final_disposition_required: true
+release:
+  human_signoff: required
+  held_out_evaluation: required
+  hard_blocks_clear: required
+

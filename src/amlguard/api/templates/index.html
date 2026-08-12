@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Alerts · AMLGuard-EU{% endblock %}
+{% block content %}
+<h2>Deterministic alerts</h2>
+<p>Select an alert to run the investigation agent.</p>
+<table>
+  <thead><tr><th>Alert</th><th>Customer token</th><th>Rule</th><th>Causal records</th><th>Status</th><th>Action</th></tr></thead>
+  <tbody>
+  {% for alert in alerts %}
+    {% set case = cases_by_alert.get(alert.alert_id) %}
+    <tr>
+      <td><code>{{ alert.alert_id }}</code></td>
+      <td><code>{{ alert.customer_id }}</code></td>
+      <td>{{ alert.rule_id }}</td>
+      <td>{{ alert.causal_transaction_ids | length }}</td>
+      <td>
+        {% if case %}<span class="status">{{ case.status.value }}</span>{% else %}<span class="muted">Not started</span>{% endif %}
+      </td>
+      <td>
+        {% if case %}
+        <div class="case-actions">
+          <a class="button-link" href="/ui/investigations/{{ case.case_id }}/page">See results</a>
+          {% if ('administrator' in actor.roles or actor.actor_id == case.assigned_investigator_id) and case.status.value not in ['OPEN', 'RUNNING'] %}
+          <details class="reset-control">
+            <summary>Reset investigation</summary>
+            <div class="reset-confirmation">
+              <p>
+                This removes the active case, recommendation versions, reviews,
+                and checkpoint. Historical audit records are retained.
+              </p>
+              <form action="/ui/investigations/{{ case.case_id }}/reset" method="post">
+                <button type="submit" class="danger">Confirm reset</button>
+              </form>
+            </div>
+          </details>
+          {% endif %}
+        </div>
+        {% elif 'administrator' in actor.roles or 'analyst' in actor.roles or 'reviewer' in actor.roles %}
+        <form class="inline-form" action="/ui/investigations" method="post">
+          <input type="hidden" name="alert_id" value="{{ alert.alert_id }}">
+          <label class="sr-only" for="context-{{ loop.index }}">Context</label>
+          <select id="context-{{ loop.index }}" name="context_condition">
+            <option value="B5" selected>B5 safeguards</option>
+            <option value="B0">B0 baseline</option>
+          </select>
+          <button type="submit">Investigate</button>
+        </form>
+        {% else %}
+        <span class="muted">Read-only role</span>
+        {% endif %}
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

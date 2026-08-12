@@ -1,0 +1,55 @@
+controls:
+  - control_id: AML-EVIDENCE-001
+    version: "1.0"
+    title: Evidence-backed material claims
+    jurisdiction: FR
+    normative_type: research_interpretation
+    source_policy_ids: [FR-TRACFIN-ANALYSIS-001]
+    requirement: Every material factual claim references retrieved case-scoped evidence.
+    enforcement_type: output_validator
+    component: evidence_validator
+    evidence_required: [material_claim, evidence_id]
+    severity: critical
+    hard_block: true
+    review_status: researcher_curated
+  - control_id: AML-HUMAN-001
+    version: "1.0"
+    title: Human disposition required
+    jurisdiction: FR
+    normative_type: internal_policy
+    source_policy_ids: []
+    requirement: The model recommendation cannot become a final disposition without human review.
+    enforcement_type: workflow_gate
+    component: langgraph_interrupt
+    evidence_required: [human_review]
+    severity: critical
+    hard_block: true
+    review_status: researcher_curated
+  - control_id: POLICY-CITATION-001
+    version: "1.0"
+    title: Retrieved policy citations required
+    jurisdiction: FR
+    normative_type: research_interpretation
+    source_policy_ids: []
+    requirement: >-
+      When applicable policy is retrieved, the recommendation cites at least
+      one retrieved policy ID and never cites an unavailable policy ID.
+    enforcement_type: output_validator
+    component: policy_validator
+    evidence_required: [policy_id, retrieved_policy]
+    severity: critical
+    hard_block: true
+    review_status: researcher_curated
+  - control_id: AML-SCOPE-001
+    version: "1.0"
+    title: Case-scoped access
+    jurisdiction: FR
+    normative_type: internal_policy
+    source_policy_ids: []
+    requirement: All data access is authorized against the active case before retrieval.
+    enforcement_type: authorization
+    component: tool_authorization
+    evidence_required: [case_id, customer_id, authorization_decision]
+    severity: critical
+    hard_block: true
+    review_status: researcher_curated

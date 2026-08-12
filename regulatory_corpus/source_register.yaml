@@ -1,0 +1,68 @@
+sources:
+  - source_id: FR-CMF
+    title: Code monétaire et financier
+    issuing_body: République française
+    url: https://www.legifrance.gouv.fr/codes/id/LEGITEXT000006072026/
+    publication_date: null
+    effective_from: null
+    effective_to: null
+    retrieval_date: 2026-08-10
+    jurisdiction: FR
+    normative_type: law
+    language: fr
+    document_hash: null
+    review_status: researcher_curated
+  - source_id: FR-TRACFIN-DECL
+    title: Les obligations déclaratives
+    issuing_body: TRACFIN
+    url: https://www.economie.gouv.fr/tracfin/les-obligations-declaratives
+    publication_date: null
+    effective_from: null
+    effective_to: null
+    retrieval_date: 2026-08-10
+    jurisdiction: FR
+    normative_type: regulatory_guidance
+    language: fr
+    document_hash: null
+    review_status: researcher_curated
+  - source_id: FR-ACPR-TRACFIN-OPS-2025
+    title: >-
+      Lignes directrices conjointes de l'ACPR et de TRACFIN relatives aux
+      obligations de vigilance sur les opérations et de déclaration à TRACFIN
+    issuing_body: ACPR and TRACFIN
+    url: https://acpr.banque-france.fr/fr/publications-et-statistiques/publications/lignes-directrices-conjointes-de-lacpr-et-de-tracfin-relatives-aux-obligations-de-vigilance-sur-les
+    publication_date: 2025-04-23
+    effective_from: 2025-04-23
+    effective_to: null
+    retrieval_date: 2026-08-10
+    jurisdiction: FR
+    normative_type: regulatory_guidance
+    language: fr
+    document_hash: null
+    review_status: researcher_curated
+  - source_id: EU-TFR-2023-1113
+    title: Regulation (EU) 2023/1113 on information accompanying transfers
+    issuing_body: European Parliament and Council
+    url: https://eur-lex.europa.eu/eli/reg/2023/1113/oj/eng
+    publication_date: 2023-06-09
+    effective_from: 2024-12-30
+    effective_to: null
+    retrieval_date: 2026-08-11
+    jurisdiction: EU
+    normative_type: regulation
+    language: en
+    document_hash: null
+    review_status: researcher_curated
+  - source_id: EU-AMLR-2024-1624
+    title: Regulation (EU) 2024/1624
+    issuing_body: European Parliament and Council
+    url: https://eur-lex.europa.eu/eli/reg/2024/1624/oj/eng
+    publication_date: 2024-06-19
+    effective_from: 2027-07-10
+    effective_to: null
+    retrieval_date: 2026-08-10
+    jurisdiction: EU
+    normative_type: regulation
+    language: en
+    document_hash: null
+    review_status: researcher_curated

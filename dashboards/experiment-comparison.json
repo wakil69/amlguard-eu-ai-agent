@@ -1,0 +1,23 @@
+{
+  "title": "AMLGuard-EU Experiment Comparison",
+  "uid": "amlguard-experiments",
+  "schemaVersion": 39,
+  "version": 1,
+  "panels": [
+    {
+      "type": "timeseries",
+      "title": "Primary view",
+      "targets": [
+        {
+          "expr": "sum(rate(amlguard_evaluation_score_sum[5m])) by (evaluator, metric, configuration) / sum(rate(amlguard_evaluation_score_count[5m])) by (evaluator, metric, configuration)"
+        }
+      ],
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      }
+    }
+  ]
+}

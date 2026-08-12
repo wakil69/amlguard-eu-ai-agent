@@ -1,0 +1,23 @@
+{
+  "title": "AMLGuard-EU Cost",
+  "uid": "amlguard-cost",
+  "schemaVersion": 39,
+  "version": 1,
+  "panels": [
+    {
+      "type": "timeseries",
+      "title": "Primary view",
+      "targets": [
+        {
+          "expr": "sum(amlguard_model_cost_eur_total) by (basis, configuration)"
+        }
+      ],
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      }
+    }
+  ]
+}

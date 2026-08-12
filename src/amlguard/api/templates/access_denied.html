@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Access denied · AMLGuard-EU{% endblock %}
+{% block content %}
+<main class="auth-shell">
+  <section class="auth-card" aria-labelledby="access-denied-title">
+    <p class="muted">Authenticated identity</p>
+    <h2 id="access-denied-title">Your account has no AMLGuard role</h2>
+    <p>
+      Keycloak authenticated this session, but the token did not contain one of
+      the required roles: <code>analyst</code>, <code>reviewer</code>,
+      <code>researcher</code>, or <code>administrator</code>.
+    </p>
+    <p>
+      This can happen after an OIDC role-mapper change because the existing
+      browser session still contains older claims. Sign out and authenticate
+      again to request a fresh token.
+    </p>
+    <form action="/logout" method="post">
+      <button type="submit">Sign out and try again</button>
+    </form>
+  </section>
+</main>
+{% endblock %}

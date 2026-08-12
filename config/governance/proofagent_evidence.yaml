@@ -1,0 +1,102 @@
+schema_version: "1.0"
+description: >-
+  Explicit, bounded repository evidence supplied to ProofAgent's compliance
+  assessor. Registration means that the material is available for assessment;
+  it does not constitute legal approval or a compliance claim.
+organizational_controls_path: config/governance/organizational_controls.yaml
+documents:
+  - document_id: governance-profile
+    path: config/governance/profile.yaml
+    approval_status: draft_with_unassigned_owners
+    sections:
+      - heading: $document
+        max_chars: 650
+  - document_id: dpia-style-assessment
+    path: docs/data_protection_impact_assessment.md
+    approval_status: research_assessment_not_formal_dpia
+    sections:
+      - heading: Status and decision
+        max_chars: 650
+      - heading: Approval gates
+        max_chars: 550
+  - document_id: threat-model
+    path: docs/threat_model.md
+    approval_status: repository_documentation
+    sections:
+      - heading: Scope and security objective
+        max_chars: 450
+      - heading: Release-blocking events
+        max_chars: 550
+  - document_id: observability
+    path: docs/observability.md
+    approval_status: repository_documentation
+    sections:
+      - heading: Alerts
+        max_chars: 500
+  - document_id: architecture
+    path: docs/architecture.md
+    approval_status: repository_documentation
+    sections:
+      - heading: As-built control summary
+        max_chars: 550
+validation_rules:
+  - framework_id: eu_ai_act
+    control_id: art9
+    status_ceiling: partial
+    required_evidence: [document:threat-model]
+    rationale: A threat model exists, but the lifecycle risk-management system lacks formal ownership and approval.
+  - framework_id: eu_ai_act
+    control_id: art10
+    status_ceiling: partial
+    required_evidence: [document:dpia-style-assessment, runtime:bounded_read_only_retrieval]
+    rationale: Data controls are implemented for synthetic research, but production data governance is not approved.
+  - framework_id: eu_ai_act
+    control_id: art11
+    status_ceiling: partial
+    required_evidence: [document:architecture, document:threat-model]
+    rationale: Repository technical documentation exists but has no formal conformity approval.
+  - framework_id: eu_ai_act
+    control_id: art13
+    status_ceiling: met
+    required_evidence: [runtime:human_review_required, runtime:release_gate_enforced]
+    rationale: The run is explicitly advisory and held behind human review.
+  - framework_id: eu_ai_act
+    control_id: art14
+    status_ceiling: partial
+    required_evidence: [runtime:human_review_required, runtime:release_gate_enforced, readiness:human_release_controls_configured]
+    rationale: The technical review gate is active, but organizational oversight evidence is incomplete.
+  - framework_id: eu_ai_act
+    control_id: art15
+    status_ceiling: partial
+    required_evidence: [runtime:controls_evaluated, runtime:audit_chain_valid, document:threat-model]
+    rationale: Runtime controls and audit integrity are evidenced, but independent assurance is incomplete.
+  - framework_id: gdpr
+    control_id: lawfulness
+    status_ceiling: not_evaluated
+    required_evidence: []
+    rationale: No controller-approved purpose and legal-basis record exists.
+  - framework_id: gdpr
+    control_id: minimization
+    status_ceiling: partial
+    required_evidence: [runtime:data_minimization_instructions, runtime:bounded_read_only_retrieval]
+    rationale: Prompt and retrieval bounds support minimization, but organizational necessity approval is incomplete.
+  - framework_id: gdpr
+    control_id: dsar
+    status_ceiling: not_evaluated
+    required_evidence: []
+    rationale: No approved data-subject-rights operating procedure exists.
+  - framework_id: gdpr
+    control_id: security_art32
+    status_ceiling: partial
+    required_evidence: [runtime:audit_chain_valid, document:threat-model, document:observability]
+    rationale: Application controls are evidenced, but deployment security and independent assurance remain incomplete.
+  - framework_id: gdpr
+    control_id: dpia
+    status_ceiling: not_evaluated
+    required_evidence: []
+    rationale: The registered assessment explicitly states that it is not a completed formal Article 35 DPIA.
+  - framework_id: gdpr
+    control_id: automated_art22
+    status_ceiling: met
+    required_evidence: [runtime:human_review_required, runtime:release_gate_enforced]
+    rationale: This run cannot make a final disposition or execute a consequential action without human review.

@@ -1,0 +1,50 @@
+schema_version: "1.0"
+scope: synthetic_research
+statement: >-
+  These records describe current repository evidence. They do not replace
+  accountable-owner assignment, legal review, contractual evidence, or formal
+  approval. Production readiness remains blocked while any production-blocking
+  item is incomplete.
+checks:
+  - check_id: research_scope_declared
+    status: implemented_and_approved
+    research_blocking: true
+    production_blocking: false
+    evidence: docs/data_protection_impact_assessment.md#status-and-decision
+    action: Keep the system restricted to controlled synthetic-data research.
+  - check_id: formal_dpia_approved
+    status: incomplete
+    research_blocking: false
+    production_blocking: true
+    evidence: docs/data_protection_impact_assessment.md
+    action: Complete and approve an Article 35 DPIA with controller and DPO input.
+  - check_id: retention_schedule_approved_and_implemented
+    status: incomplete
+    research_blocking: false
+    production_blocking: true
+    evidence: docs/data_protection_impact_assessment.md#retention-and-deletion
+    action: Approve and test deletion schedules for every store and backup.
+  - check_id: incident_response_owned_and_tested
+    status: incomplete
+    research_blocking: false
+    production_blocking: true
+    evidence: docs/data_protection_impact_assessment.md#data-subject-rights-and-incidents
+    action: Assign incident ownership and test notification and recovery procedures.
+  - check_id: provider_processing_terms_recorded
+    status: external_evidence_required
+    research_blocking: false
+    production_blocking: true
+    evidence: none
+    action: Record the DPA, subprocessors, retention, training-use, deletion, and transfer terms.
+  - check_id: data_subject_rights_process_approved
+    status: incomplete
+    research_blocking: false
+    production_blocking: true
+    evidence: docs/data_protection_impact_assessment.md#data-subject-rights-and-incidents
+    action: Approve notice, access, correction, restriction, and response procedures.
+  - check_id: independent_security_assurance_completed
+    status: not_implemented
+    research_blocking: false
+    production_blocking: true
+    evidence: docs/threat_model.md
+    action: Complete independent security testing and record remediation acceptance.

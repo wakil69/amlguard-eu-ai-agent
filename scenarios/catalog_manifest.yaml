@@ -1,0 +1,303 @@
+schema_version: "1.0"
+scenarios:
+  - id: DEV-001
+    pack: development
+    definition_source: deterministic_catalog_v1
+  - id: DEV-002
+    pack: development
+    definition_source: deterministic_catalog_v1
+  - id: DEV-003
+    pack: development
+    definition_source: deterministic_catalog_v1
+  - id: DEV-004
+    pack: development
+    definition_source: deterministic_catalog_v1
+  - id: DEV-005
+    pack: development
+    definition_source: deterministic_catalog_v1
+  - id: DEV-006
+    pack: development
+    definition_source: deterministic_catalog_v1
+  - id: DEV-007
+    pack: development
+    definition_source: deterministic_catalog_v1
+  - id: DEV-008
+    pack: development
+    definition_source: deterministic_catalog_v1
+  - id: DEV-009
+    pack: development
+    definition_source: deterministic_catalog_v1
+  - id: DEV-010
+    pack: development
+    definition_source: deterministic_catalog_v1
+  - id: DEV-011
+    pack: development
+    definition_source: deterministic_catalog_v1
+  - id: DEV-012
+    pack: development
+    definition_source: deterministic_catalog_v1
+  - id: DEV-013
+    pack: development
+    definition_source: deterministic_catalog_v1
+  - id: DEV-014
+    pack: development
+    definition_source: deterministic_catalog_v1
+  - id: DEV-015
+    pack: development
+    definition_source: deterministic_catalog_v1
+  - id: DEV-016
+    pack: development
+    definition_source: deterministic_catalog_v1
+  - id: DEV-017
+    pack: development
+    definition_source: deterministic_catalog_v1
+  - id: DEV-018
+    pack: development
+    definition_source: deterministic_catalog_v1
+  - id: DEV-019
+    pack: development
+    definition_source: deterministic_catalog_v1
+  - id: DEV-020
+    pack: development
+    definition_source: deterministic_catalog_v1
+  - id: VAL-001
+    pack: validation
+    definition_source: deterministic_catalog_v1
+  - id: VAL-002
+    pack: validation
+    definition_source: deterministic_catalog_v1
+  - id: VAL-003
+    pack: validation
+    definition_source: deterministic_catalog_v1
+  - id: VAL-004
+    pack: validation
+    definition_source: deterministic_catalog_v1
+  - id: VAL-005
+    pack: validation
+    definition_source: deterministic_catalog_v1
+  - id: VAL-006
+    pack: validation
+    definition_source: deterministic_catalog_v1
+  - id: VAL-007
+    pack: validation
+    definition_source: deterministic_catalog_v1
+  - id: VAL-008
+    pack: validation
+    definition_source: deterministic_catalog_v1
+  - id: VAL-009
+    pack: validation
+    definition_source: deterministic_catalog_v1
+  - id: VAL-010
+    pack: validation
+    definition_source: deterministic_catalog_v1
+  - id: VAL-011
+    pack: validation
+    definition_source: deterministic_catalog_v1
+  - id: VAL-012
+    pack: validation
+    definition_source: deterministic_catalog_v1
+  - id: VAL-013
+    pack: validation
+    definition_source: deterministic_catalog_v1
+  - id: VAL-014
+    pack: validation
+    definition_source: deterministic_catalog_v1
+  - id: VAL-015
+    pack: validation
+    definition_source: deterministic_catalog_v1
+  - id: VAL-016
+    pack: validation
+    definition_source: deterministic_catalog_v1
+  - id: VAL-017
+    pack: validation
+    definition_source: deterministic_catalog_v1
+  - id: VAL-018
+    pack: validation
+    definition_source: deterministic_catalog_v1
+  - id: VAL-019
+    pack: validation
+    definition_source: deterministic_catalog_v1
+  - id: VAL-020
+    pack: validation
+    definition_source: deterministic_catalog_v1
+  - id: REG-001
+    pack: regression
+    definition_source: deterministic_catalog_v1
+  - id: REG-002
+    pack: regression
+    definition_source: deterministic_catalog_v1
+  - id: REG-003
+    pack: regression
+    definition_source: deterministic_catalog_v1
+  - id: REG-004
+    pack: regression
+    definition_source: deterministic_catalog_v1
+  - id: REG-005
+    pack: regression
+    definition_source: deterministic_catalog_v1
+  - id: REG-006
+    pack: regression
+    definition_source: deterministic_catalog_v1
+  - id: REG-007
+    pack: regression
+    definition_source: deterministic_catalog_v1
+  - id: REG-008
+    pack: regression
+    definition_source: deterministic_catalog_v1
+  - id: REG-009
+    pack: regression
+    definition_source: deterministic_catalog_v1
+  - id: REG-010
+    pack: regression
+    definition_source: deterministic_catalog_v1
+  - id: HO-001
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-002
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-003
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-004
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-005
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-006
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-007
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-008
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-009
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-010
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-011
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-012
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-013
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-014
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-015
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-016
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-017
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-018
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-019
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-020
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-021
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-022
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-023
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-024
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-025
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-026
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-027
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-028
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-029
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-030
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-031
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-032
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-033
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-034
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-035
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-036
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-037
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-038
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-039
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-040
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-041
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-042
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-043
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-044
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-045
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-046
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-047
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-048
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-049
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+  - id: HO-050
+    pack: held_out
+    definition_source: deterministic_catalog_v1
+

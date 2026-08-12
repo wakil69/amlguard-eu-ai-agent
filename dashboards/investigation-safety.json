@@ -1,0 +1,20 @@
+{
+  "title": "AMLGuard-EU Investigation Safety",
+  "uid": "amlguard-safety",
+  "schemaVersion": 39,
+  "version": 1,
+  "panels": [
+    {
+      "type": "stat",
+      "title": "Hard blocks",
+      "targets": [{"expr": "sum(increase(amlguard_hard_blocks_total[24h])) by (reason)"}],
+      "gridPos": {"h": 8, "w": 8, "x": 0, "y": 0}
+    },
+    {
+      "type": "stat",
+      "title": "Cross-scope attempts",
+      "targets": [{"expr": "sum(increase(amlguard_cross_scope_attempts_total[24h])) by (surface)"}],
+      "gridPos": {"h": 8, "w": 8, "x": 8, "y": 0}
+    }
+  ]
+}

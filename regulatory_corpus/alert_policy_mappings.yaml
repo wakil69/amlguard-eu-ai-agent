@@ -1,0 +1,200 @@
+mappings:
+  - mapping_version: "1.0"
+    alert_rule_id: EXPECTED_ACTIVITY_VARIANCE
+    rationale: >-
+      A variance alert requires comparison with current customer knowledge and
+      a documented decision whether the operation is merely unusual or remains suspicious.
+    always_policy_rules:
+      - policy_id: FR-CMF-ONGOING-MONITORING-001
+        stage: initial_analysis
+        rationale: Compare the operation with current knowledge of the relationship.
+      - policy_id: FR-CMF-RISK-FACTORS-001
+        stage: initial_analysis
+        rationale: Interpret the variance using customer, transaction, product, and geographic risk factors.
+      - policy_id: FR-ACPR-ATYPICAL-ANALYSIS-001
+        stage: initial_analysis
+        rationale: Analyse the atypical operation before deciding whether concern remains.
+      - policy_id: FR-CMF-REPORT-BASIS-001
+        stage: reporting_assessment
+        rationale: Apply the legal suspicion basis when deciding whether the benign explanation is sufficient.
+      - policy_id: FR-CMF-RECORD-RETENTION-001
+        stage: recordkeeping
+        rationale: Preserve the evidence and analysis supporting the disposition.
+    conditional_policy_rules:
+      - policy_id: FR-CMF-KYC-UPDATE-001
+        stage: information_collection
+        rationale: Refresh customer knowledge when KYC is unavailable or not current.
+        when_any: [kyc_missing, kyc_not_current]
+      - policy_id: FR-CMF-RELATION-PURPOSE-001
+        stage: information_collection
+        rationale: Obtain the relationship purpose when it is absent from the evidence.
+        when_any: [relationship_purpose_unavailable]
+      - policy_id: FR-CMF-BENEFICIAL-OWNER-001
+        stage: information_collection
+        rationale: Obtain beneficial-owner information for a business customer when it is unavailable.
+        when_all: [business_customer, beneficial_owner_data_unavailable]
+      - policy_id: FR-CMF-PEP-ADDITIONAL-DD-001
+        stage: information_collection
+        rationale: Obtain and assess PEP status because the retrieved customer evidence does not contain it.
+        when_any: [pep_status_unavailable]
+      - policy_id: FR-CMF-HIGH-RISK-COUNTRY-001
+        stage: information_collection
+        rationale: Obtain counterparty geography before excluding high-risk-country measures.
+        when_any: [counterparty_geography_unavailable]
+      - policy_id: FR-CMF-SANCTIONS-ESCALATION-001
+        stage: information_collection
+        rationale: Obtain sanctions-screening evidence and escalate any potential match to the authorized human process.
+        when_any: [sanctions_screening_status_unavailable]
+    review_status: researcher_curated
+    aml_expert_reviewed: false
+    reviewer_id: null
+    reviewed_at: null
+
+  - mapping_version: "1.0"
+    alert_rule_id: RAPID_FUNDS_MOVEMENT
+    rationale: >-
+      Rapid movement is an atypical indicator, not a legal conclusion. The case
+      must be tested against customer knowledge, enhanced-examination criteria,
+      and the reporting basis.
+    always_policy_rules:
+      - policy_id: FR-CMF-ONGOING-MONITORING-001
+        stage: initial_analysis
+        rationale: Compare rapid movement with current knowledge of the relationship.
+      - policy_id: FR-ACPR-ATYPICAL-ANALYSIS-001
+        stage: initial_analysis
+        rationale: Analyse the detected pattern before drawing a conclusion.
+      - policy_id: FR-CMF-REPORT-BASIS-001
+        stage: reporting_assessment
+        rationale: Assess whether the completed analysis provides the statutory basis for suspicion.
+      - policy_id: FR-TRACFIN-NO-THRESHOLD-001
+        stage: reporting_assessment
+        rationale: Do not treat a transaction amount as an automatic reporting threshold.
+      - policy_id: FR-TRACFIN-NO-PROOF-001
+        stage: reporting_assessment
+        rationale: Distinguish reasoned suspicion from proof or criminal qualification.
+      - policy_id: FR-TRACFIN-ANALYSIS-001
+        stage: reporting_assessment
+        rationale: Require a reasoned analysis grounded in customer and beneficial-owner knowledge.
+      - policy_id: FR-CMF-STR-CONFIDENTIALITY-001
+        stage: confidentiality
+        rationale: Protect the existence and content of any contemplated suspicious report.
+      - policy_id: FR-CMF-RECORD-RETENTION-001
+        stage: recordkeeping
+        rationale: Preserve the evidence and analysis supporting the disposition.
+    conditional_policy_rules:
+      - policy_id: FR-CMF-ENHANCED-EXAM-001
+        stage: enhanced_examination
+        rationale: Test the atypical pattern against the statutory enhanced-examination triggers.
+        when_any: [potential_enhanced_examination_pattern]
+      - policy_id: FR-CMF-FUNDS-PURPOSE-001
+        stage: enhanced_examination
+        rationale: Establish origin, destination, purpose, and beneficiary when enhanced examination may apply.
+        when_any: [potential_enhanced_examination_pattern]
+      - policy_id: FR-CMF-RISK-BASED-001
+        stage: initial_analysis
+        rationale: Increase the depth of analysis for a high-risk customer or a transaction exceeding the recorded profile.
+        when_any: [high_risk_customer, causal_amount_exceeds_expected_monthly_turnover]
+      - policy_id: FR-CMF-BENEFICIAL-OWNER-001
+        stage: information_collection
+        rationale: Obtain beneficial-owner information for a business customer when it is unavailable.
+        when_all: [business_customer, beneficial_owner_data_unavailable]
+      - policy_id: FR-CMF-KYC-UPDATE-001
+        stage: information_collection
+        rationale: Refresh customer knowledge when KYC is unavailable or not current.
+        when_any: [kyc_missing, kyc_not_current]
+      - policy_id: FR-CMF-PEP-ADDITIONAL-DD-001
+        stage: information_collection
+        rationale: Obtain and assess PEP status because the retrieved customer evidence does not contain it.
+        when_any: [pep_status_unavailable]
+      - policy_id: FR-CMF-HIGH-RISK-COUNTRY-001
+        stage: information_collection
+        rationale: Obtain counterparty geography before excluding high-risk-country measures.
+        when_any: [counterparty_geography_unavailable]
+      - policy_id: FR-CMF-SANCTIONS-ESCALATION-001
+        stage: information_collection
+        rationale: Obtain sanctions-screening evidence and escalate any potential match to the authorized human process.
+        when_any: [sanctions_screening_status_unavailable]
+      - policy_id: EU-TFR-FUNDS-TRACEABILITY-001
+        stage: information_collection
+        rationale: Check payer and payee traceability information if the transactions fall within the transfer regulation's scope.
+        when_any: [rapid_funds_movement_pattern]
+    review_status: researcher_curated
+    aml_expert_reviewed: false
+    reviewer_id: null
+    reviewed_at: null
+
+  - mapping_version: "1.0"
+    alert_rule_id: STRUCTURING_LIKE_REPEATED_CREDITS
+    rationale: >-
+      Repeated credits can be atypical, but the synthetic detector thresholds
+      are not legal reporting thresholds. The pattern requires contextual analysis.
+    always_policy_rules:
+      - policy_id: FR-CMF-ONGOING-MONITORING-001
+        stage: initial_analysis
+        rationale: Compare repeated credits with current knowledge of the relationship.
+      - policy_id: FR-ACPR-ATYPICAL-ANALYSIS-001
+        stage: initial_analysis
+        rationale: Analyse the repeated-credit pattern before drawing a conclusion.
+      - policy_id: FR-TRACFIN-NO-THRESHOLD-001
+        stage: reporting_assessment
+        rationale: Do not treat detector thresholds as statutory reporting thresholds.
+      - policy_id: FR-CMF-REPORT-BASIS-001
+        stage: reporting_assessment
+        rationale: Assess whether the completed analysis provides the statutory basis for suspicion.
+      - policy_id: FR-TRACFIN-NO-PROOF-001
+        stage: reporting_assessment
+        rationale: Distinguish reasoned suspicion from proof or criminal qualification.
+      - policy_id: FR-TRACFIN-ANALYSIS-001
+        stage: reporting_assessment
+        rationale: Require a reasoned analysis grounded in customer and beneficial-owner knowledge.
+      - policy_id: FR-CMF-STR-CONFIDENTIALITY-001
+        stage: confidentiality
+        rationale: Protect the existence and content of any contemplated suspicious report.
+      - policy_id: FR-CMF-RECORD-RETENTION-001
+        stage: recordkeeping
+        rationale: Preserve the evidence and analysis supporting the disposition.
+    conditional_policy_rules:
+      - policy_id: FR-CMF-ENHANCED-EXAM-001
+        stage: enhanced_examination
+        rationale: Test the atypical pattern against the statutory enhanced-examination triggers.
+        when_any: [potential_enhanced_examination_pattern]
+      - policy_id: FR-CMF-FUNDS-PURPOSE-001
+        stage: enhanced_examination
+        rationale: Establish origin, destination, purpose, and beneficiary when enhanced examination may apply.
+        when_any: [potential_enhanced_examination_pattern]
+      - policy_id: FR-CMF-RISK-BASED-001
+        stage: initial_analysis
+        rationale: Increase analysis depth for a high-risk customer or activity outside the recorded profile.
+        when_any: [high_risk_customer, causal_amount_exceeds_expected_monthly_turnover]
+      - policy_id: FR-CMF-BENEFICIAL-OWNER-001
+        stage: information_collection
+        rationale: Obtain beneficial-owner information for a business customer when it is unavailable.
+        when_all: [business_customer, beneficial_owner_data_unavailable]
+      - policy_id: FR-CMF-KYC-UPDATE-001
+        stage: information_collection
+        rationale: Refresh customer knowledge when KYC is unavailable or not current.
+        when_any: [kyc_missing, kyc_not_current]
+      - policy_id: FR-CMF-PEP-ADDITIONAL-DD-001
+        stage: information_collection
+        rationale: Obtain and assess PEP status because the retrieved customer evidence does not contain it.
+        when_any: [pep_status_unavailable]
+      - policy_id: FR-CMF-HIGH-RISK-COUNTRY-001
+        stage: information_collection
+        rationale: Obtain counterparty geography before excluding high-risk-country measures.
+        when_any: [counterparty_geography_unavailable]
+      - policy_id: FR-CMF-SANCTIONS-ESCALATION-001
+        stage: information_collection
+        rationale: Obtain sanctions-screening evidence and escalate any potential match to the authorized human process.
+        when_any: [sanctions_screening_status_unavailable]
+      - policy_id: EU-TFR-FUNDS-TRACEABILITY-001
+        stage: information_collection
+        rationale: Check payer and payee traceability information if the transactions fall within the transfer regulation's scope.
+        when_any: [repeated_credit_pattern]
+      - policy_id: FR-CMF-TAX-FRAUD-INDICATORS-001
+        stage: reporting_assessment
+        rationale: For a business customer, assess whether any regulatory tax-fraud criterion is evidenced rather than inferring it from repeated credits alone.
+        when_all: [business_customer, repeated_credit_pattern]
+    review_status: researcher_curated
+    aml_expert_reviewed: false
+    reviewer_id: null
+    reviewed_at: null

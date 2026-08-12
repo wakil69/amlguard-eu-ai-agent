@@ -1,0 +1,229 @@
+<section id="investigation-workspace"
+         class="workspace"
+         data-case-id="{{ run.case_id }}"
+         aria-live="polite">
+  <div class="workspace-header">
+    <div>
+      <h2>Investigation {{ case.case_ref }}</h2>
+      <p class="muted">Alert <code>{{ run.alert_id }}</code> · Recommendation version {{ run.recommendation_version }}</p>
+    </div>
+    <span class="status">{{ run.status.value }}</span>
+  </div>
+
+  {% if message %}<p class="message">{{ message }}</p>{% endif %}
+  {% if error %}<p class="error">{{ error }}</p>{% endif %}
+
+  {% if run.reviews %}
+  <h3>Review decisions</h3>
+  <div class="grid">
+    {% for review in run.reviews %}
+    <article class="card">
+      <p><strong>{{ review.action.value | replace('_', ' ') | title }}</strong></p>
+      <dl class="metadata-list">
+        <dt>Reviewer</dt><dd><code>{{ review.reviewer_id }}</code></dd>
+        <dt>Reviewed</dt><dd><time datetime="{{ review.reviewed_at.isoformat() }}">{{ review.reviewed_at }}</time></dd>
+        <dt>Recommendation version</dt><dd>{{ review.recommendation_version }}</dd>
+      </dl>
+      <h4>Rationale</h4>
+      <p>{{ review.rationale }}</p>
+    </article>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if run.recommendation %}
+  <div class="grid">
+    <article class="card">
+      <h3>Recommendation</h3>
+      <p><strong>{{ run.recommendation.recommendation.value }}</strong></p>
+      <p>{{ run.recommendation.summary }}</p>
+      {% if run.recommendation.recommended_next_steps %}
+      <h4>Next steps</h4>
+      <ul class="compact-list">
+        {% for item in run.recommendation.recommended_next_steps %}<li>{{ item }}</li>{% endfor %}
+      </ul>
+      {% endif %}
+    </article>
+    <article class="card">
+      <h3>Grounding</h3>
+      <p><strong>{{ run.evidence | length }}</strong> evidence items</p>
+      <p><strong>{{ run.policies | length }}</strong> policy excerpts</p>
+      <p><strong>{{ run.control_results | length }}</strong> control results</p>
+      {% if run.hard_blocks %}
+      <p class="error">Hard blocks: {{ run.hard_blocks | join(', ') }}</p>
+      {% endif %}
+    </article>
+  </div>
+
+  <h3>Material findings</h3>
+  <div class="grid">
+    {% for finding in run.recommendation.material_findings %}
+    <article class="card">
+      <p>{{ finding.claim }}</p>
+      <p class="muted">{{ finding.claim_type }} · {{ finding.assessment }}</p>
+      <p><strong>Evidence:</strong> <code>{{ finding.evidence_ids | join(', ') }}</code></p>
+      <p><strong>Policy:</strong> <code>{{ finding.policy_ids | join(', ') }}</code></p>
+    </article>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <details>
+    <summary>Control results</summary>
+    <table>
+      <thead><tr><th>Control</th><th>Outcome</th><th>Reason</th></tr></thead>
+      <tbody>
+      {% for control in run.control_results %}
+        <tr><td><code>{{ control.control_id }}</code></td><td>{{ control.outcome }}</td><td>{{ control.reason }}</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </details>
+
+  <details>
+    <summary>Retrieved policy</summary>
+    <p class="muted">
+      These are the complete approved excerpts stored in the local policy
+      corpus. An excerpt may cover only part of an official legal article.
+    </p>
+    <div class="grid">
+    {% for policy in run.policies %}
+      <article class="card">
+        <h4>{{ policy.provision }}</h4>
+        <p class="muted">
+          <code>{{ policy.policy_id }}</code> · {{ policy.jurisdiction }} ·
+          {{ policy.normative_type.value }} · {{ policy.authoritative_language }}
+        </p>
+        <details>
+          <summary>Show approved policy text</summary>
+          <p lang="{{ policy.authoritative_language }}">{{ policy.text }}</p>
+        </details>
+      </article>
+    {% endfor %}
+    </div>
+  </details>
+
+  <details>
+    <summary>Evidence inventory</summary>
+    <p class="muted">
+      All records below are synthetic. The SHA-256 value is an integrity
+      fingerprint; it does not encrypt the evidence or prove that it is true.
+      Highlighted transactions appear first and are the records identified by
+      the monitoring rule as having triggered this alert.
+    </p>
+    <div class="grid">
+    {% for evidence in evidence_inventory %}
+      <article class="card{% if evidence.evidence_type == 'transaction' and evidence.evidence_id in triggering_transaction_ids %} triggering-evidence{% endif %}">
+        {% if evidence.evidence_type == 'transaction' and evidence.evidence_id in triggering_transaction_ids %}
+        <span class="trigger-badge">Triggered this alert</span>
+        {% endif %}
+        <h4>{{ evidence.evidence_type | replace('_', ' ') | title }}</h4>
+        <dl class="metadata-list">
+          <dt>Evidence ID</dt><dd><code>{{ evidence.evidence_id }}</code></dd>
+          <dt>Source record</dt><dd><code>{{ evidence.source_record_id }}</code></dd>
+          <dt>Customer</dt><dd><code>{{ evidence.customer_id }}</code></dd>
+          <dt>Retrieved</dt><dd>{{ evidence.retrieved_at }}</dd>
+          <dt>Provenance</dt><dd>{{ evidence.provenance }}</dd>
+          <dt>SHA-256</dt><dd><code>{{ evidence.content_hash }}</code></dd>
+        </dl>
+        <details>
+          <summary>Show evidence content</summary>
+          <pre>{{ evidence.content | tojson(indent=2) }}</pre>
+        </details>
+      </article>
+    {% endfor %}
+    </div>
+  </details>
+
+  {% if run.status.value == 'WAITING_FOR_INFORMATION' and can_supply_information %}
+  <div class="card">
+    <h3>Supply requested information</h3>
+    {% if run.recommendation and run.recommendation.missing_information %}
+    <ul class="compact-list">
+      {% for item in run.recommendation.missing_information %}<li>{{ item }}</li>{% endfor %}
+    </ul>
+    {% endif %}
+    <form hx-post="/ui/investigations/{{ run.case_id }}/resume"
+          hx-target="#investigation-workspace"
+          hx-swap="outerHTML">
+      <input type="hidden" name="submission_id" value="{{ form_id }}">
+      <label for="information-json">Information as a JSON object</label>
+      <textarea id="information-json" name="information_json" required>{"source_of_funds": "Synthetic supporting information"}</textarea>
+      <button type="submit">Add information and rerun</button>
+    </form>
+  </div>
+  {% endif %}
+
+  {% if run.status.value == 'WAITING_FOR_HUMAN_REVIEW' %}
+    {% if can_claim %}
+    <form hx-post="/ui/investigations/{{ run.case_id }}/claim-review"
+          hx-target="#investigation-workspace"
+          hx-swap="outerHTML">
+      <button type="submit" class="secondary">Claim review</button>
+    </form>
+    {% elif can_review %}
+    <div class="card">
+      <h3>Human review</h3>
+      <form hx-post="/ui/investigations/{{ run.case_id }}/human-review"
+            hx-target="#investigation-workspace"
+            hx-swap="outerHTML">
+        <input type="hidden" name="recommendation_version" value="{{ run.recommendation_version }}">
+        <label for="review-rationale">Rationale</label>
+        <p id="rationale-guidance" class="muted">
+          Explain why you approve or reject the recommendation. Refer to the
+          relevant evidence, policy, unresolved concerns, and limitations.
+        </p>
+        <details>
+          <summary>Show an example rationale</summary>
+          <p class="muted">
+            The recommendation is supported by the cited transactions and policy
+            controls. No unresolved contradictions were identified. Approval is
+            limited to this synthetic case and still requires normal AML oversight.
+          </p>
+        </details>
+        <textarea id="review-rationale"
+                  name="rationale"
+                  aria-describedby="rationale-guidance"
+                  placeholder="Write a case-specific explanation for your decision…"
+                  required></textarea>
+        <div class="review-actions">
+          <button type="submit" name="action" value="APPROVE">Approve</button>
+          <button type="submit" name="action" value="REJECT_AND_REQUEST_REWORK" class="danger">Reject and request rework</button>
+        </div>
+      </form>
+    </div>
+    {% else %}
+    <p class="muted">This case must be claimed by an eligible reviewer before review.</p>
+    {% endif %}
+  {% endif %}
+
+  {% if run.errors %}
+  <div class="error">
+    <strong>Execution errors</strong>
+    <ul class="compact-list">
+      {% for item in run.errors %}
+      <li>
+        <strong>{{ item.stage }}: {{ item.error_code }}</strong>
+        {% if item.upstream_status %} (HTTP {{ item.upstream_status }}){% endif %}
+        <br>{{ item.safe_message }}
+        <br><code>Error ID: {{ item.error_id }}</code>
+        {% if item.validation_issues %}
+        <ul class="compact-list">
+          {% for issue in item.validation_issues %}
+          <li><code>{{ issue.location }}</code>: {{ issue.issue_type }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+  <p>
+    <button class="secondary"
+            hx-get="/ui/investigations/{{ run.case_id }}"
+            hx-target="#investigation-workspace"
+            hx-swap="outerHTML">Refresh</button>
+  </p>
+</section>

@@ -1,0 +1,32 @@
+{
+  "title": "AMLGuard-EU System Health",
+  "uid": "amlguard-health",
+  "schemaVersion": 39,
+  "version": 1,
+  "panels": [
+    {
+      "type": "timeseries",
+      "title": "Investigation runs",
+      "targets": [{"expr": "rate(amlguard_runs_total[5m])", "legendFormat": "{{status}}"}],
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 0}
+    },
+    {
+      "type": "timeseries",
+      "title": "Tool denials",
+      "targets": [{"expr": "rate(amlguard_tool_denials_total[5m])"}],
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 0}
+    },
+    {
+      "type": "timeseries",
+      "title": "Graph stage p95 latency",
+      "targets": [{"expr": "histogram_quantile(0.95, sum(rate(amlguard_investigation_stage_duration_seconds_bucket[5m])) by (le, stage))", "legendFormat": "{{stage}}"}],
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 8}
+    },
+    {
+      "type": "stat",
+      "title": "Dependency readiness",
+      "targets": [{"expr": "min by (dependency) (amlguard_dependency_ready)"}],
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 8}
+    }
+  ]
+}

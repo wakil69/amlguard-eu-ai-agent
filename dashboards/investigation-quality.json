@@ -1,0 +1,23 @@
+{
+  "title": "AMLGuard-EU Investigation Quality",
+  "uid": "amlguard-quality",
+  "schemaVersion": 39,
+  "version": 1,
+  "panels": [
+    {
+      "type": "timeseries",
+      "title": "Primary view",
+      "targets": [
+        {
+          "expr": "sum(increase(amlguard_unsupported_claims_total[1h]))"
+        }
+      ],
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      }
+    }
+  ]
+}

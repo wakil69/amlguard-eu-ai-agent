@@ -1,0 +1,404 @@
+chunks:
+  - policy_id: FR-TRACFIN-ANALYSIS-001
+    source_id: FR-TRACFIN-DECL
+    provision: Elements required in a suspicious report
+    text: >-
+      Une déclaration de soupçon comporte des éléments d'identification et de
+      connaissance du client ou du bénéficiaire effectif ainsi que des éléments
+      d'analyse motivant le soupçon.
+    topics: [suspicious_report, customer, beneficial_owner, analysis]
+    authoritative_language: fr
+    jurisdiction: FR
+    normative_type: regulatory_guidance
+    effective_from: null
+    effective_to: null
+    content_hash: null
+    approved: true
+  - policy_id: FR-TRACFIN-NO-THRESHOLD-001
+    source_id: FR-TRACFIN-DECL
+    provision: Absence of a universal reporting threshold
+    text: La loi ne prévoit pas de seuil déclaratif pour effectuer une déclaration de soupçon.
+    topics: [suspicious_report, threshold, transaction]
+    authoritative_language: fr
+    jurisdiction: FR
+    normative_type: regulatory_guidance
+    effective_from: null
+    effective_to: null
+    content_hash: null
+    approved: true
+  - policy_id: FR-TRACFIN-NO-PROOF-001
+    source_id: FR-TRACFIN-DECL
+    provision: Suspicion does not require proof or legal classification
+    text: >-
+      Le déclarant n'a pas à prouver la matérialité de l'infraction ni à la
+      qualifier juridiquement; son analyse doit expliquer les éléments qui
+      fondent le soupçon.
+    topics: [suspicious_report, suspicion, analysis, evidence]
+    authoritative_language: fr
+    jurisdiction: FR
+    normative_type: regulatory_guidance
+    effective_from: null
+    effective_to: null
+    content_hash: null
+    approved: true
+  - policy_id: FR-CMF-RISK-BASED-001
+    source_id: FR-CMF
+    provision: Article L. 561-4-1 - risk-based vigilance
+    text: >-
+      Les mesures de vigilance sont adaptées à l'évaluation des risques de
+      blanchiment de capitaux et de financement du terrorisme présentés par
+      l'activité.
+    topics: [risk_assessment, risk_based_approach, vigilance]
+    authoritative_language: fr
+    jurisdiction: FR
+    normative_type: law
+    effective_from: 2020-02-14
+    effective_to: null
+    content_hash: null
+    approved: true
+  - policy_id: FR-CMF-RISK-FACTORS-001
+    source_id: FR-CMF
+    provision: Article L. 561-4-1 - risk-classification factors
+    text: >-
+      La classification des risques tient notamment compte des produits ou
+      services, des conditions de transaction, des canaux de distribution, des
+      caractéristiques des clients et des pays d'origine ou de destination des
+      fonds.
+    topics: [risk_assessment, customer, transaction, geography, source_of_funds]
+    authoritative_language: fr
+    jurisdiction: FR
+    normative_type: law
+    effective_from: 2020-02-14
+    effective_to: null
+    content_hash: null
+    approved: true
+  - policy_id: FR-CMF-CUSTOMER-ID-001
+    source_id: FR-CMF
+    provision: Article L. 561-5 I - customer identification and verification
+    text: >-
+      Avant la relation d'affaires ou l'assistance à une transaction, le client
+      est identifié et son identité est vérifiée au moyen d'un document écrit
+      probant.
+    topics: [customer_due_diligence, customer, identity, kyc]
+    authoritative_language: fr
+    jurisdiction: FR
+    normative_type: law
+    effective_from: 2016-12-03
+    effective_to: null
+    content_hash: null
+    approved: true
+  - policy_id: FR-CMF-BENEFICIAL-OWNER-001
+    source_id: FR-CMF
+    provision: Article L. 561-5 I - beneficial-owner identification and verification
+    text: >-
+      Le cas échéant, le bénéficiaire effectif est identifié et son identité est
+      vérifiée au moyen d'un document écrit probant.
+    topics: [customer_due_diligence, beneficial_owner, identity, kyc]
+    authoritative_language: fr
+    jurisdiction: FR
+    normative_type: law
+    effective_from: 2016-12-03
+    effective_to: null
+    content_hash: null
+    approved: true
+  - policy_id: FR-CMF-RELATION-PURPOSE-001
+    source_id: FR-CMF
+    provision: Article L. 561-5-1 - purpose and nature of the business relationship
+    text: >-
+      Avant d'établir une relation d'affaires, les informations relatives à son
+      objet, à sa nature et tout autre élément pertinent sont recueillis.
+    topics: [customer_due_diligence, business_relationship, purpose, kyc]
+    authoritative_language: fr
+    jurisdiction: FR
+    normative_type: law
+    effective_from: 2016-12-03
+    effective_to: null
+    content_hash: null
+    approved: true
+  - policy_id: FR-CMF-KYC-UPDATE-001
+    source_id: FR-CMF
+    provision: Article L. 561-5-1 - ongoing KYC updates
+    text: >-
+      Les informations sur l'objet et la nature de la relation d'affaires sont
+      actualisées pendant toute sa durée.
+    topics: [customer_due_diligence, business_relationship, ongoing_monitoring, kyc]
+    authoritative_language: fr
+    jurisdiction: FR
+    normative_type: law
+    effective_from: 2016-12-03
+    effective_to: null
+    content_hash: null
+    approved: true
+  - policy_id: FR-CMF-ONGOING-MONITORING-001
+    source_id: FR-CMF
+    provision: Article L. 561-6 - ongoing vigilance
+    text: >-
+      Une vigilance constante et un examen attentif des opérations sont exercés
+      afin de vérifier leur cohérence avec la connaissance actualisée de la
+      relation d'affaires.
+    topics: [ongoing_monitoring, transaction, customer, kyc, vigilance]
+    authoritative_language: fr
+    jurisdiction: FR
+    normative_type: law
+    effective_from: 2016-12-03
+    effective_to: null
+    content_hash: null
+    approved: true
+  - policy_id: FR-CMF-CDD-INCOMPLETE-001
+    source_id: FR-CMF
+    provision: Article L. 561-8 - inability to complete due diligence
+    text: >-
+      Si les obligations d'identification ou de connaissance de la relation ne
+      peuvent pas être satisfaites, l'opération ou la relation ne doit pas être
+      engagée ou poursuivie dans les conditions prévues par la loi. Dans cet
+      agent, ce constat déclenche une demande d'information et une décision
+      humaine; l'agent ne bloque ni ne clôture lui-même une relation.
+    topics: [customer_due_diligence, missing_information, escalation, human_review]
+    authoritative_language: fr
+    jurisdiction: FR
+    normative_type: research_interpretation
+    effective_from: 2020-02-14
+    effective_to: null
+    content_hash: null
+    approved: true
+  - policy_id: FR-CMF-ENHANCED-EXAM-001
+    source_id: FR-CMF
+    provision: Article L. 561-10-2 - enhanced-examination triggers
+    text: >-
+      Un examen renforcé est requis pour une opération particulièrement
+      complexe, d'un montant inhabituellement élevé ou sans justification
+      économique ou objet licite apparent.
+    topics: [enhanced_due_diligence, unusual_transaction, amount, transaction]
+    authoritative_language: fr
+    jurisdiction: FR
+    normative_type: law
+    effective_from: 2016-12-03
+    effective_to: null
+    content_hash: null
+    approved: true
+  - policy_id: FR-CMF-FUNDS-PURPOSE-001
+    source_id: FR-CMF
+    provision: Article L. 561-10-2 - enhanced-examination information
+    text: >-
+      L'examen renforcé recherche auprès du client l'origine des fonds, leur
+      destination, l'objet de l'opération et l'identité de son bénéficiaire.
+    topics: [enhanced_due_diligence, source_of_funds, destination_of_funds, purpose, beneficiary]
+    authoritative_language: fr
+    jurisdiction: FR
+    normative_type: law
+    effective_from: 2016-12-03
+    effective_to: null
+    content_hash: null
+    approved: true
+  - policy_id: FR-CMF-RECORD-RETENTION-001
+    source_id: FR-CMF
+    provision: Article L. 561-12 - five-year record retention
+    text: >-
+      Les documents relatifs à la relation d'affaires et aux mesures de vigilance
+      ainsi que les documents relatifs aux opérations sont conservés pendant cinq
+      ans selon les points de départ prévus par l'article.
+    topics: [record_retention, evidence, customer_due_diligence, transaction]
+    authoritative_language: fr
+    jurisdiction: FR
+    normative_type: law
+    effective_from: 2020-02-14
+    effective_to: null
+    content_hash: null
+    approved: true
+  - policy_id: FR-CMF-REPORT-BASIS-001
+    source_id: FR-CMF
+    provision: Article L. 561-15 I - grounds for suspicious reporting
+    text: >-
+      Une déclaration est requise lorsque des sommes ou opérations sont connues,
+      soupçonnées ou raisonnablement soupçonnées de provenir d'une infraction
+      passible de plus d'un an d'emprisonnement ou d'être liées au financement
+      du terrorisme.
+    topics: [suspicious_report, suspicion, money_laundering, terrorist_financing]
+    authoritative_language: fr
+    jurisdiction: FR
+    normative_type: law
+    effective_from: 2016-12-03
+    effective_to: null
+    content_hash: null
+    approved: true
+  - policy_id: FR-CMF-REPORT-NEW-INFO-001
+    source_id: FR-CMF
+    provision: Article L. 561-15 IV - information arising after a report
+    text: >-
+      Toute information nouvelle qui infirme, conforte ou modifie une déclaration
+      déjà transmise est communiquée sans délai à TRACFIN.
+    topics: [suspicious_report, new_information, tracfin, reporting]
+    authoritative_language: fr
+    jurisdiction: FR
+    normative_type: law
+    effective_from: 2016-12-03
+    effective_to: null
+    content_hash: null
+    approved: true
+  - policy_id: FR-CMF-ATTEMPTED-TRANSACTION-001
+    source_id: FR-CMF
+    provision: Article L. 561-15 V - attempted transactions
+    text: >-
+      Les tentatives d'opérations répondant aux conditions de déclaration font
+      également l'objet d'une déclaration à TRACFIN.
+    topics: [suspicious_report, attempted_transaction, tracfin, reporting]
+    authoritative_language: fr
+    jurisdiction: FR
+    normative_type: law
+    effective_from: 2016-12-03
+    effective_to: null
+    content_hash: null
+    approved: true
+  - policy_id: FR-CMF-STR-CONFIDENTIALITY-001
+    source_id: FR-CMF
+    provision: Article L. 561-18 - suspicious-report confidentiality
+    text: >-
+      La déclaration de soupçon est confidentielle. Son existence, son contenu
+      et les suites qui lui sont données ne sont pas révélés au client ni à des
+      tiers, sous réserve des exceptions légales.
+    topics: [suspicious_report, confidentiality, no_tipping_off, customer]
+    authoritative_language: fr
+    jurisdiction: FR
+    normative_type: law
+    effective_from: 2019-06-01
+    effective_to: null
+    content_hash: null
+    approved: true
+  - policy_id: FR-ACPR-ATYPICAL-ANALYSIS-001
+    source_id: FR-ACPR-TRACFIN-OPS-2025
+    provision: Joint ACPR-TRACFIN guidelines of 23 April 2025
+    text: >-
+      Les opérations atypiques détectées doivent être analysées et, lorsque cela
+      est nécessaire, faire l'objet d'un examen renforcé afin de lever le doute
+      ou de structurer et motiver le soupçon avant la décision humaine.
+    topics: [unusual_transaction, analysis, enhanced_due_diligence, suspicious_report]
+    authoritative_language: fr
+    jurisdiction: FR
+    normative_type: regulatory_guidance
+    effective_from: 2025-04-23
+    effective_to: null
+    content_hash: null
+    approved: true
+  - policy_id: FR-CMF-PEP-ADDITIONAL-DD-001
+    source_id: FR-CMF
+    provision: Article L. 561-10 1° - politically exposed persons
+    text: >-
+      Des mesures de vigilance complémentaires sont appliquées lorsqu'un client,
+      son bénéficiaire effectif ou certaines personnes liées présentent des
+      risques particuliers en raison de fonctions politiques, juridictionnelles
+      ou administratives exercées actuellement ou antérieurement.
+    topics: [pep, politically_exposed_person, customer_due_diligence, beneficial_owner]
+    authoritative_language: fr
+    jurisdiction: FR
+    normative_type: law
+    effective_from: 2025-12-24
+    effective_to: null
+    content_hash: null
+    approved: true
+  - policy_id: FR-CMF-ANONYMITY-RISK-001
+    source_id: FR-CMF
+    provision: Article L. 561-10 2° - products or operations presenting particular risk
+    text: >-
+      Des mesures de vigilance complémentaires sont appliquées lorsque la nature
+      du produit ou de l'opération présente un risque particulier de blanchiment
+      ou de financement du terrorisme, notamment lorsqu'elle favorise l'anonymat.
+    topics: [enhanced_due_diligence, anonymity, product_risk, transaction]
+    authoritative_language: fr
+    jurisdiction: FR
+    normative_type: law
+    effective_from: 2025-12-24
+    effective_to: null
+    content_hash: null
+    approved: true
+  - policy_id: FR-CMF-HIGH-RISK-COUNTRY-001
+    source_id: FR-CMF
+    provision: Article L. 561-10 3° - listed high-risk countries and territories
+    text: >-
+      Des mesures de vigilance complémentaires sont appliquées aux opérations
+      impliquant des personnes ou entités établies dans certains États ou
+      territoires figurant sur les listes pertinentes du GAFI ou de la
+      Commission européenne.
+    topics: [enhanced_due_diligence, geography, high_risk_country, fatf, eu]
+    authoritative_language: fr
+    jurisdiction: FR
+    normative_type: law
+    effective_from: 2025-12-24
+    effective_to: null
+    content_hash: null
+    approved: true
+  - policy_id: FR-CMF-TAX-FRAUD-INDICATORS-001
+    source_id: FR-CMF
+    provision: Article D. 561-32-1 - tax-fraud reporting criteria
+    text: >-
+      L'appréciation d'un soupçon de fraude fiscale tient compte des critères
+      réglementaires applicables, notamment certaines incohérences d'activité,
+      structures écrans, anomalies documentaires ou opérations financières
+      difficiles à justifier. La présence d'un critère doit être analysée dans
+      le contexte professionnel et documentaire du client.
+    topics: [tax_fraud, shell_company, invoice_anomaly, business_customer, reporting]
+    authoritative_language: fr
+    jurisdiction: FR
+    normative_type: law
+    effective_from: 2020-02-14
+    effective_to: null
+    content_hash: null
+    approved: true
+  - policy_id: FR-CMF-SANCTIONS-ESCALATION-001
+    source_id: FR-CMF
+    provision: Articles L. 562-4 and L. 562-4-1 - sanctions and asset-freezing controls
+    text: >-
+      Une correspondance potentielle avec une mesure de gel doit être transmise
+      sans délai au processus sanctions autorisé de l'établissement. Cet agent
+      consultatif ne confirme pas une correspondance, ne gèle pas les avoirs et
+      n'informe pas lui-même les autorités; il conserve l'alerte et exige une
+      décision humaine spécialisée.
+    topics: [sanctions, asset_freezing, escalation, human_review, prohibited_action]
+    authoritative_language: fr
+    jurisdiction: FR
+    normative_type: research_interpretation
+    effective_from: 2022-02-26
+    effective_to: null
+    content_hash: null
+    approved: true
+  - policy_id: EU-TFR-FUNDS-TRACEABILITY-001
+    source_id: EU-TFR-2023-1113
+    provision: Articles 1 and 4 - information accompanying transfers of funds
+    text: >-
+      In-scope transfers of funds must carry the required payer and payee
+      information so that the transfer remains traceable, subject to the
+      Regulation's scope, verification rules, and exceptions.
+    topics: [wire_transfer, payer, payee, traceability, transfer_information]
+    authoritative_language: en
+    jurisdiction: EU
+    normative_type: regulation
+    effective_from: 2024-12-30
+    effective_to: null
+    content_hash: null
+    approved: true
+  - policy_id: EU-TFR-CRYPTO-TRACEABILITY-001
+    source_id: EU-TFR-2023-1113
+    provision: Article 1 - information accompanying transfers of crypto-assets
+    text: >-
+      In-scope transfers of crypto-assets must carry required originator and
+      beneficiary information for AML/CFT traceability, subject to the
+      Regulation's scope and detailed rules.
+    topics: [crypto_asset, originator, beneficiary, traceability, transfer_information]
+    authoritative_language: en
+    jurisdiction: EU
+    normative_type: regulation
+    effective_from: 2024-12-30
+    effective_to: null
+    content_hash: null
+    approved: true
+  - policy_id: EU-AMLR-FUTURE-001
+    source_id: EU-AMLR-2024-1624
+    provision: Article 90
+    text: The Regulation generally applies from 10 July 2027.
+    topics: [future_readiness, regulation, applicability]
+    authoritative_language: en
+    jurisdiction: EU
+    normative_type: regulation
+    effective_from: 2027-07-10
+    effective_to: null
+    content_hash: null
+    approved: true

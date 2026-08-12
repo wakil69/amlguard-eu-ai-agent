@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Investigation error · AMLGuard-EU{% endblock %}
+{% block content %}
+<p><a href="/">&larr; Back to alerts</a></p>
+<section id="investigation-workspace" class="workspace" aria-live="polite">
+  <h2>Investigation could not be started</h2>
+  <p class="error">{{ error }}</p>
+</section>
+{% endblock %}

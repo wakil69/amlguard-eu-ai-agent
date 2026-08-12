@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Sign in · AMLGuard-EU{% endblock %}
+{% block content %}
+<main class="auth-shell">
+  <section class="auth-card" aria-labelledby="sign-in-title">
+    <p class="muted">Secure research workspace</p>
+    <h2 id="sign-in-title">Sign in to continue</h2>
+    <p>
+      AMLGuard uses Keycloak and OpenID Connect (OIDC) to verify your identity,
+      role, and tenant before showing alerts or investigations.
+    </p>
+    <div class="auth-actions">
+      <a class="button-link" href="/login">Sign in with Keycloak</a>
+      <span class="muted">Identity service: <code>{{ keycloak_url }}</code></span>
+    </div>
+
+    <h3>How to authenticate</h3>
+    <ol class="auth-steps">
+      <li>Make sure the Docker <code>keycloak</code> and <code>app</code> services are running.</li>
+      <li>Select <strong>Sign in with Keycloak</strong>.</li>
+      <li>Enter one of the local development accounts below.</li>
+      <li>After successful authentication, Keycloak returns you to AMLGuard.</li>
+    </ol>
+
+    {% if development_credentials %}
+    <div class="auth-note">
+      <strong>Simple local workflow:</strong> use
+      <code>administrator</code> / <code>administrator-dev</code>.
+      This account can perform every application action.
+    </div>
+    <details>
+      <summary>Other development roles</summary>
+      <table class="credential-table">
+        <thead><tr><th>Username</th><th>Password</th><th>Purpose</th></tr></thead>
+        <tbody>
+          <tr><td><code>analyst</code></td><td><code>analyst-dev</code></td><td>Investigate assigned cases</td></tr>
+          <tr><td><code>reviewer</code></td><td><code>reviewer-dev</code></td><td>Claim and review cases</td></tr>
+          <tr><td><code>researcher</code></td><td><code>researcher-dev</code></td><td>Read tenant research results</td></tr>
+        </tbody>
+      </table>
+    </details>
+    <p class="muted">
+      These seeded credentials are only for local development. Replace them
+      before using the system outside an isolated development environment.
+    </p>
+    {% endif %}
+  </section>
+</main>
+{% endblock %}

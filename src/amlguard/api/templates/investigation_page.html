@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block title %}Investigation {{ case.case_ref }} · AMLGuard-EU{% endblock %}
+{% block content %}
+<p><a href="/">&larr; Back to alerts</a></p>
+{% include "investigation_workspace.html" %}
+{% endblock %}

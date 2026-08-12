@@ -1,0 +1,25 @@
+schema_version: "1.0"
+experiment_id: 11111111-1111-4111-8111-111111111111
+name: regression-example
+git_commit: uncommitted
+dependency_lock_hash: pending
+dataset_version: "1.0"
+dataset_seed: 20260810
+scenario_pack: regression
+scenario_version: "1.0"
+policy_version: "1.0"
+control_version: "1.0"
+endpoint_class: EU
+configurations:
+  - configuration_id: fake-b5
+    model_id: fake/deterministic
+    context_condition: B5
+    prompt_version: "1.0"
+    tool_schema_version: "1.0"
+    graph_version: "1.0"
+repetitions: 1
+evaluator_version: "1.0"
+juror_mode: none
+telemetry_version: "1.0"
+randomization_seed: 42
+cost_ceiling_eur: "1.00"

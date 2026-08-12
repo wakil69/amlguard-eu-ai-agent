@@ -1,0 +1,64 @@
+# Environment and local configuration. Keep sanitized examples publishable.
+.env
+.env.*
+!.env*.example
+.venv/
+venv/
+
+# Python bytecode, tooling, tests, and coverage.
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.pytest-*/
+.test-output-*/
+.hypothesis/
+.mypy_cache/
+.pyright/
+.ruff_cache/
+.tox/
+.nox/
+.uv-cache/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+junit.xml
+
+# Packaging and generated documentation.
+dist/
+build/
+site/
+*.egg-info/
+
+# AMLGuard restricted or generated research material.
+.artifacts/
+.held-out/
+*.agx
+
+# Secrets and local cryptographic material. Keep only the instructions.
+secrets/*
+!secrets/README.md
+*.key
+*.pem
+*.p12
+*.pfx
+
+# Local databases, backups, and transient files.
+*.sqlite
+*.sqlite3
+*.db
+*.dump
+*.backup
+*.log
+*.tmp
+*.bak
+uv.lock.tmp
+
+# IDE and operating-system metadata.
+.idea/
+.vscode/
+*.code-workspace
+.DS_Store
+Thumbs.db
+Desktop.ini

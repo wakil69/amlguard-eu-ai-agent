@@ -1,0 +1,21 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+rule_files:
+  - /etc/prometheus/alerts.yaml
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets: ["alertmanager:9093"]
+scrape_configs:
+  - job_name: otel-collector
+    static_configs:
+      - targets: ["otel-collector:8889"]
+  - job_name: amlguard
+    metrics_path: /metrics
+    static_configs:
+      - targets: ["app:8000"]
+    metric_relabel_configs:
+      - source_labels: [__name__]
+        regex: "amlguard_dependency_ready|process_.*|python_.*"
+        action: keep
